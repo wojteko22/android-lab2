@@ -20,22 +20,18 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         setSupportActionBar(toolbar)
-
         adapter = MoviesAdapter(movieList)
         recyclerView.adapter = adapter
         recyclerView.layoutManager = LinearLayoutManager(this)
         recyclerView.addItemDecoration(DividerItemDecoration(this, DividerItemDecoration.VERTICAL))
         recyclerView.itemAnimator = DefaultItemAnimator()
-
-        recyclerView.addOnItemTouchListener(RecyclerTouchListener(applicationContext, recyclerView, object : RecyclerTouchListener.ClickListener {
+        recyclerView.addOnItemTouchListener(RecyclerTouchListener(applicationContext, recyclerView, object : ClickListener {
             override fun onClick(view: View, position: Int) {
                 val movie = movieList[position]
                 Toast.makeText(applicationContext, movie.title + " is selected!", Toast.LENGTH_SHORT).show()
             }
 
-            override fun onLongClick(view: View, position: Int) {
-
-            }
+            override fun onLongClick(view: View, position: Int) {}
         }))
         prepareMovieData()
     }
