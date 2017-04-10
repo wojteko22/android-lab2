@@ -8,11 +8,11 @@ import android.widget.TextView;
 
 import java.util.List;
 
-public class MoviesAdapter extends RecyclerView.Adapter<MoviesAdapter.MyViewHolder> {
+class MoviesAdapter extends RecyclerView.Adapter<MoviesAdapter.MyViewHolder> {
 
     private List<Movie> moviesList;
 
-    public MoviesAdapter(List<Movie> moviesList) {
+    MoviesAdapter(List<Movie> moviesList) {
         this.moviesList = moviesList;
     }
 
@@ -37,10 +37,10 @@ public class MoviesAdapter extends RecyclerView.Adapter<MoviesAdapter.MyViewHold
         return moviesList.size();
     }
 
-    public class MyViewHolder extends RecyclerView.ViewHolder {
-        public TextView title, year, genre;
+    class MyViewHolder extends RecyclerView.ViewHolder {
+        TextView title, year, genre;
 
-        public MyViewHolder(View view) {
+        MyViewHolder(View view) {
             super(view);
             title = (TextView) view.findViewById(R.id.title);
             genre = (TextView) view.findViewById(R.id.genre);
