@@ -25,13 +25,13 @@ class MainActivity : AppCompatActivity() {
         recyclerView.layoutManager = LinearLayoutManager(this)
         recyclerView.addItemDecoration(DividerItemDecoration(this, DividerItemDecoration.VERTICAL))
         recyclerView.itemAnimator = DefaultItemAnimator()
-        recyclerView.addOnItemTouchListener(RecyclerTouchListener(applicationContext, recyclerView, object : ClickListener {
-            override fun onClick(view: View, position: Int) {
+        recyclerView.addOnItemTouchListener(RecyclerTouchListener(applicationContext, recyclerView, object : OnItemClickListener {
+            override fun onItemClick(view: View, position: Int) {
                 val movie = movieList[position]
                 Toast.makeText(applicationContext, movie.title + " is selected!", Toast.LENGTH_SHORT).show()
             }
 
-            override fun onLongClick(view: View, position: Int) {}
+            override fun onLongItemClick(view: View, position: Int) {}
         }))
         prepareMovieData()
     }
