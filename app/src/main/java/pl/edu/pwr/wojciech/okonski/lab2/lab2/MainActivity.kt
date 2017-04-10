@@ -23,8 +23,7 @@ class MainActivity : AppCompatActivity() {
 
         adapter = MoviesAdapter(movieList)
         recyclerView.adapter = adapter
-        val layoutManager = LinearLayoutManager(this)
-        recyclerView.layoutManager = layoutManager
+        recyclerView.layoutManager = LinearLayoutManager(this)
         recyclerView.addItemDecoration(DividerItemDecoration(this, DividerItemDecoration.VERTICAL))
         recyclerView.itemAnimator = DefaultItemAnimator()
 
@@ -42,54 +41,24 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun prepareMovieData() {
-        var movie = Movie("Mad Max: Fury Road", "Action & Adventure", "2015")
-        movieList.add(movie)
-
-        movie = Movie("Inside Out", "Animation, Kids & Family", "2015")
-        movieList.add(movie)
-
-        movie = Movie("Star Wars: Episode VII - The Force Awakens", "Action", "2015")
-        movieList.add(movie)
-
-        movie = Movie("Shaun the Sheep", "Animation", "2015")
-        movieList.add(movie)
-
-        movie = Movie("The Martian", "Science Fiction & Fantasy", "2015")
-        movieList.add(movie)
-
-        movie = Movie("Mission: Impossible Rogue Nation", "Action", "2015")
-        movieList.add(movie)
-
-        movie = Movie("Up", "Animation", "2009")
-        movieList.add(movie)
-
-        movie = Movie("Star Trek", "Science Fiction", "2009")
-        movieList.add(movie)
-
-        movie = Movie("The LEGO Movie", "Animation", "2014")
-        movieList.add(movie)
-
-        movie = Movie("Iron Man", "Action & Adventure", "2008")
-        movieList.add(movie)
-
-        movie = Movie("Aliens", "Science Fiction", "1986")
-        movieList.add(movie)
-
-        movie = Movie("Chicken Run", "Animation", "2000")
-        movieList.add(movie)
-
-        movie = Movie("Back to the Future", "Science Fiction", "1985")
-        movieList.add(movie)
-
-        movie = Movie("Raiders of the Lost Ark", "Action & Adventure", "1981")
-        movieList.add(movie)
-
-        movie = Movie("Goldfinger", "Action & Adventure", "1965")
-        movieList.add(movie)
-
-        movie = Movie("Guardians of the Galaxy", "Science Fiction & Fantasy", "2014")
-        movieList.add(movie)
-
-        adapter!!.notifyDataSetChanged()
+        movieList += arrayOf(
+                Movie("Mad Max: Fury Road", "Action & Adventure", "2015"),
+                Movie("Inside Out", "Animation, Kids & Family", "2015"),
+                Movie("Star Wars: Episode VII - The Force Awakens", "Action", "2015"),
+                Movie("Shaun the Sheep", "Animation", "2015"),
+                Movie("The Martian", "Science Fiction & Fantasy", "2015"),
+                Movie("Mission: Impossible Rogue Nation", "Action", "2015"),
+                Movie("Up", "Animation", "2009"),
+                Movie("Star Trek", "Science Fiction", "2009"),
+                Movie("The LEGO Movie", "Animation", "2014"),
+                Movie("Iron Man", "Action & Adventure", "2008"),
+                Movie("Aliens", "Science Fiction", "1986"),
+                Movie("Chicken Run", "Animation", "2000"),
+                Movie("Back to the Future", "Science Fiction", "1985"),
+                Movie("Raiders of the Lost Ark", "Action & Adventure", "1981"),
+                Movie("Goldfinger", "Action & Adventure", "1965"),
+                Movie("Guardians of the Galaxy", "Science Fiction & Fantasy", "2014")
+        )
+        adapter.notifyDataSetChanged()
     }
 }
