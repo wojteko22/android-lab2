@@ -6,9 +6,9 @@ import android.support.v7.widget.DefaultItemAnimator
 import android.support.v7.widget.DividerItemDecoration
 import android.support.v7.widget.LinearLayoutManager
 import android.view.View
-import android.widget.Toast
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.content_main.*
+import org.jetbrains.anko.toast
 import java.util.*
 import kotlin.properties.Delegates
 
@@ -28,7 +28,7 @@ class MainActivity : AppCompatActivity() {
         recyclerView.addOnItemTouchListener(RecyclerTouchListener(applicationContext, recyclerView, object : OnItemClickListener {
             override fun onItemClick(view: View, position: Int) {
                 val movie = movieList[position]
-                Toast.makeText(applicationContext, movie.title + " is selected!", Toast.LENGTH_SHORT).show()
+                toast(movie.title + " is selected!")
             }
 
             override fun onLongItemClick(view: View, position: Int) {}
