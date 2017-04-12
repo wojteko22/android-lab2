@@ -5,6 +5,8 @@ import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.DefaultItemAnimator
 import android.support.v7.widget.DividerItemDecoration
 import android.support.v7.widget.LinearLayoutManager
+import android.support.v7.widget.RecyclerView
+import android.support.v7.widget.helper.ItemTouchHelper
 import android.view.View
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.content_main.*
@@ -21,7 +23,9 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
         setSupportActionBar(toolbar)
         setRecyclerView()
+        swipeToDismissTouchHelper.attachToRecyclerView(recyclerView)
     }
+
 
     private fun setRecyclerView() {
         adapter = MoviesAdapter(movieList)
@@ -63,5 +67,21 @@ class MainActivity : AppCompatActivity() {
                 Movie("Guardians of the Galaxy", "Science Fiction & Fantasy", "2014")
         )
         adapter.notifyDataSetChanged()
+    }
+
+    val swipeToDismissTouchHelper = ItemTouchHelper(object : ItemTouchHelper.SimpleCallback(0, ItemTouchHelper.RIGHT) {
+        override fun onMove(recyclerView: RecyclerView?, viewHolder: RecyclerView.ViewHolder?, target: RecyclerView.ViewHolder?): Boolean {
+            return false
+        }
+
+        override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
+            deleteItem(viewHolder)
+        }
+    })
+
+    private fun deleteItem(viewHolder: RecyclerView.ViewHolder) {
+        val position = viewHolder.adapterPosition
+        movieList.removeAt(position)
+        adapter.notifyItemRemoved(position)
     }
 }
