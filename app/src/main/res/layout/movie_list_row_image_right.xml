@@ -21,6 +21,7 @@
         android:layout_marginRight="8dp"
         android:layout_marginTop="0dp"
         android:contentDescription="@string/an_eye"
+        android:visibility="invisible"
         app:layout_constraintRight_toLeftOf="@+id/image"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@android:drawable/ic_menu_view" />

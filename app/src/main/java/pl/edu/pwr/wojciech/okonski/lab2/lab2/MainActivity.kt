@@ -7,7 +7,6 @@ import android.support.v7.widget.DividerItemDecoration
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
 import android.support.v7.widget.helper.ItemTouchHelper
-import android.view.View
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.content_main.*
 import org.jetbrains.anko.toast
@@ -76,9 +75,5 @@ class MainActivity : AppCompatActivity(), OnItemClickListener {
     override fun onItemClick(position: Int) {
         val movie = movieList[position]
         toast(movie.title + " is selected!")
-    }
-
-    override fun onLongItemClick(view: View, position: Int) {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
 }

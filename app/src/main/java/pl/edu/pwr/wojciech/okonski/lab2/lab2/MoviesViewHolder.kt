@@ -12,5 +12,19 @@ class MoviesViewHolder(view: View, listener: OnItemClickListener) : RecyclerView
 
     init {
         view.setOnClickListener { listener.onItemClick(adapterPosition) }
+        view.setOnLongClickListener {
+            consume {
+                view.ivEye.visibility =
+                        if (view.ivEye.visibility == View.VISIBLE)
+                            View.INVISIBLE
+                        else
+                            View.VISIBLE
+            }
+        }
+    }
+
+    inline fun consume(f: () -> Unit): Boolean {
+        f()
+        return true
     }
 }
