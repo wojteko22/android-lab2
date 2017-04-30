@@ -5,10 +5,16 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 
 class MoviesAdapter(private val moviesList: List<Movie>) : RecyclerView.Adapter<MoviesViewHolder>() {
+    private val imageLeft = 0
+    private val imageRight = 1
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MoviesViewHolder {
-        val itemView = LayoutInflater.from(parent.context)
-                .inflate(R.layout.movie_list_row, parent, false)
+        val itemView =
+                if (viewType == imageLeft)
+                    LayoutInflater.from(parent.context)
+                            .inflate(R.layout.movie_list_row, parent, false)
+                else LayoutInflater.from(parent.context)
+                        .inflate(R.layout.movie_list_row_image_right, parent, false)
         return MoviesViewHolder(itemView)
     }
 
@@ -21,5 +27,9 @@ class MoviesAdapter(private val moviesList: List<Movie>) : RecyclerView.Adapter<
 
     override fun getItemCount(): Int {
         return moviesList.size
+    }
+
+    override fun getItemViewType(position: Int): Int {
+        return if (position % 2 == 0) imageLeft else imageRight
     }
 }
