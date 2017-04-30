@@ -4,7 +4,7 @@ import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.ViewGroup
 
-class MoviesAdapter(private val moviesList: List<Movie>) : RecyclerView.Adapter<MoviesViewHolder>() {
+class MoviesAdapter(private val moviesList: List<Movie>, private val listener: OnItemClickListener) : RecyclerView.Adapter<MoviesViewHolder>() {
     private val imageLeft = 0
     private val imageRight = 1
 
@@ -15,7 +15,7 @@ class MoviesAdapter(private val moviesList: List<Movie>) : RecyclerView.Adapter<
                             .inflate(R.layout.movie_list_row, parent, false)
                 else LayoutInflater.from(parent.context)
                         .inflate(R.layout.movie_list_row_image_right, parent, false)
-        return MoviesViewHolder(itemView)
+        return MoviesViewHolder(itemView, listener)
     }
 
     override fun onBindViewHolder(holder: MoviesViewHolder, position: Int) {

@@ -14,7 +14,7 @@ import org.jetbrains.anko.toast
 import java.util.*
 import kotlin.properties.Delegates
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity(), OnItemClickListener {
     private val movieList = ArrayList<Movie>()
     private var adapter: MoviesAdapter by Delegates.notNull()
 
@@ -26,25 +26,13 @@ class MainActivity : AppCompatActivity() {
         swipeToDismissTouchHelper.attachToRecyclerView(recyclerView)
     }
 
-
     private fun setRecyclerView() {
-        adapter = MoviesAdapter(movieList)
+        adapter = MoviesAdapter(movieList, this)
         recyclerView.adapter = adapter
         recyclerView.layoutManager = LinearLayoutManager(this)
         recyclerView.addItemDecoration(DividerItemDecoration(this, DividerItemDecoration.VERTICAL))
         recyclerView.itemAnimator = DefaultItemAnimator()
-        recyclerView.addOnItemTouchListener(RecyclerTouchListener(applicationContext, recyclerView, listener))
         prepareMovieData()
-    }
-
-
-    private val listener = object : OnItemClickListener {
-        override fun onItemClick(view: View, position: Int) {
-            val movie = movieList[position]
-            toast(movie.title + " is selected!")
-        }
-
-        override fun onLongItemClick(view: View, position: Int) {}
     }
 
     private fun prepareMovieData() {
@@ -83,5 +71,14 @@ class MainActivity : AppCompatActivity() {
         val position = viewHolder.adapterPosition
         movieList.removeAt(position)
         adapter.notifyItemRemoved(position)
+    }
+
+    override fun onItemClick(position: Int) {
+        val movie = movieList[position]
+        toast(movie.title + " is selected!")
+    }
+
+    override fun onLongItemClick(view: View, position: Int) {
+        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
 }

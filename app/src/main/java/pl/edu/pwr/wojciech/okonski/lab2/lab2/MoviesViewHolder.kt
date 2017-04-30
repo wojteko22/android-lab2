@@ -5,8 +5,12 @@ import android.view.View
 import android.widget.TextView
 import kotlinx.android.synthetic.main.movie_list_row.view.*
 
-class MoviesViewHolder(view: View) : RecyclerView.ViewHolder(view) {
+class MoviesViewHolder(view: View, listener: OnItemClickListener) : RecyclerView.ViewHolder(view) {
     val title: TextView = view.title
     val year: TextView = view.year
     val genre: TextView = view.genre
+
+    init {
+        view.setOnClickListener { listener.onItemClick(adapterPosition) }
+    }
 }
