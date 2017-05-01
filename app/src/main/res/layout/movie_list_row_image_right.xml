@@ -22,15 +22,15 @@
         android:layout_marginTop="0dp"
         android:contentDescription="@string/an_eye"
         android:visibility="invisible"
-        app:layout_constraintRight_toLeftOf="@+id/image"
+        app:layout_constraintRight_toLeftOf="@+id/ivMovieImage"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@android:drawable/ic_menu_view" />
 
     <ImageView
-        android:id="@+id/image"
+        android:id="@+id/ivMovieImage"
         android:layout_width="50dp"
         android:layout_height="50dp"
-        android:contentDescription="@string/film_cover"
+        android:contentDescription="@string/movie_image"
         android:src="@drawable/ic_all_out_black_24dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintRight_toRightOf="parent"
@@ -46,7 +46,7 @@
         android:textSize="16sp"
         android:textStyle="bold"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toTopOf="@id/image"
+        app:layout_constraintTop_toTopOf="@id/ivMovieImage"
         tools:text="Upsssssssssssssssssssss" />
 
     <TextView
@@ -56,7 +56,7 @@
         android:layout_below="@id/title"
         android:layout_marginLeft="@dimen/default_margin"
         android:layout_marginRight="@dimen/default_margin"
-        app:layout_constraintBottom_toBottomOf="@id/image"
+        app:layout_constraintBottom_toBottomOf="@id/ivMovieImage"
         app:layout_constraintLeft_toLeftOf="parent"
         tools:text="Animationssssssssssss" />
 
@@ -68,7 +68,7 @@
         android:layout_marginRight="@dimen/default_margin"
         android:textColor="@color/year"
         app:layout_constraintBottom_toBottomOf="@id/genre"
-        app:layout_constraintRight_toLeftOf="@id/image"
+        app:layout_constraintRight_toLeftOf="@id/ivMovieImage"
         tools:text="2009" />
 
 </android.support.constraint.ConstraintLayout>

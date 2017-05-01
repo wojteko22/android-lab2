@@ -35,7 +35,7 @@ class MainActivity : AppCompatActivity(), OnItemClickListener {
 
     private fun prepareMovieData() {
         movieList += arrayOf(
-                Movie("Mad Max: Fury Road", "Action & Adventure", "2015"),
+                Movie("Mad Max: Fury Road", "Action & Adventure", "2015", R.drawable.madmax),
                 Movie("Inside Out", "Animation, Kids & Family", "2015"),
                 Movie("Star Wars: Episode VII - The Force Awakens", "Action", "2015"),
                 Movie("Shaun the Sheep", "Animation", "2015"),
@@ -73,7 +73,7 @@ class MainActivity : AppCompatActivity(), OnItemClickListener {
 
     override fun onItemClick(position: Int) {
         val movie = movieList[position]
-        val intent = MovieActivity.getStartingIntent(this, movie.title)
+        val intent = MovieActivity.getStartingIntent(this, movie.title, movie.imageResource)
         startActivity(intent)
     }
 }

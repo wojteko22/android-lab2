@@ -15,15 +15,19 @@ class MovieActivity : AppCompatActivity() {
     }
 
     private fun showInfo() {
-        tvTitle.text = intent.extras.getString(TITLE)
+        val extras = intent.extras
+        tvTitle.text = extras.getString(TITLE)
+        ivMovieImage.setImageResource(extras.getInt(IMAGE))
     }
 
     companion object {
         private val TITLE = "TITLE"
+        private val IMAGE = "IMAGE"
 
-        fun getStartingIntent(context: Context, title: String): Intent {
+        fun getStartingIntent(context: Context, title: String, imageResource: Int?): Intent {
             val intent = Intent(context, MovieActivity::class.java)
             intent.putExtra(TITLE, title)
+            intent.putExtra(IMAGE, imageResource)
             return intent
         }
     }

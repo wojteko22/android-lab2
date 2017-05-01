@@ -6,14 +6,14 @@
     android:layout_height="match_parent">
 
     <ImageView
-        android:id="@+id/imageView"
+        android:id="@+id/ivMovieImage"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginBottom="8dp"
         android:layout_marginLeft="8dp"
         android:layout_marginRight="8dp"
         android:layout_marginTop="8dp"
-        android:contentDescription="@string/image_of_the_film"
+        android:contentDescription="@string/movie_image"
         app:layout_constraintBottom_toTopOf="@+id/guideline3"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintLeft_toLeftOf="parent"
@@ -38,8 +38,8 @@
         android:layout_marginLeft="8dp"
         android:layout_marginStart="8dp"
         android:textSize="@dimen/default_font_size"
-        app:layout_constraintBottom_toBottomOf="@+id/imageView"
-        app:layout_constraintLeft_toLeftOf="@+id/imageView"
+        app:layout_constraintBottom_toBottomOf="@+id/ivMovieImage"
+        app:layout_constraintLeft_toLeftOf="@+id/ivMovieImage"
         tools:text="Inside Out" />
 
     <RatingBar

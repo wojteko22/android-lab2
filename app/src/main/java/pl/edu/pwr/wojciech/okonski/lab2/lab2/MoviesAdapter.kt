@@ -23,6 +23,7 @@ class MoviesAdapter(private val moviesList: List<Movie>, private val listener: O
         holder.title.text = movie.title
         holder.genre.text = movie.genre
         holder.year.text = movie.year
+        movie.imageResource?.let { holder.movieImage.setImageResource(it) }
     }
 
     override fun getItemCount(): Int {
