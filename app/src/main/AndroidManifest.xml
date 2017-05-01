@@ -19,7 +19,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".MovieActivity"></activity>
+        <activity
+            android:name=".MovieActivity"
+            android:parentActivityName="pl.edu.pwr.wojciech.okonski.lab2.lab2.MainActivity" />
     </application>
 
 </manifest>
