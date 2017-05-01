@@ -35,22 +35,22 @@ class MainActivity : AppCompatActivity(), OnItemClickListener {
 
     private fun prepareMovieData() {
         movieList += arrayOf(
-                Movie("Mad Max: Fury Road", "Action & Adventure", "2015", R.drawable.madmax),
-                Movie("Inside Out", "Animation, Kids & Family", "2015"),
-                Movie("Star Wars: Episode VII - The Force Awakens", "Action", "2015"),
-                Movie("Shaun the Sheep", "Animation", "2015"),
-                Movie("The Martian", "Science Fiction & Fantasy", "2015"),
-                Movie("Mission: Impossible Rogue Nation", "Action", "2015"),
-                Movie("Up", "Animation", "2009"),
-                Movie("Star Trek", "Science Fiction", "2009"),
-                Movie("The LEGO Movie", "Animation", "2014"),
-                Movie("Iron Man", "Action & Adventure", "2008"),
-                Movie("Aliens", "Science Fiction", "1986"),
-                Movie("Chicken Run", "Animation", "2000"),
-                Movie("Back to the Future", "Science Fiction", "1985"),
-                Movie("Raiders of the Lost Ark", "Action & Adventure", "1981"),
-                Movie("Goldfinger", "Action & Adventure", "1965"),
-                Movie("Guardians of the Galaxy", "Science Fiction & Fantasy", "2014")
+                Movie("Mad Max: Fury Road", MovieGenre.ACTION, "2015"),
+                Movie("Inside Out", MovieGenre.ANIMATION, "2015"),
+                Movie("Star Wars: Episode VII - The Force Awakens", MovieGenre.ACTION, "2015"),
+                Movie("Shaun the Sheep", MovieGenre.ANIMATION, "2015"),
+                Movie("The Martian", MovieGenre.FANTASY, "2015"),
+                Movie("Mission: Impossible Rogue Nation", MovieGenre.ACTION, "2015"),
+                Movie("Up", MovieGenre.ANIMATION, "2009"),
+                Movie("Star Trek", MovieGenre.FANTASY, "2009"),
+                Movie("The LEGO Movie", MovieGenre.ANIMATION, "2014"),
+                Movie("Iron Man", MovieGenre.ACTION, "2008"),
+                Movie("Aliens", MovieGenre.FANTASY, "1986"),
+                Movie("Chicken Run", MovieGenre.ANIMATION, "2000"),
+                Movie("Back to the Future", MovieGenre.FANTASY, "1985"),
+                Movie("Raiders of the Lost Ark", MovieGenre.ACTION, "1981"),
+                Movie("Goldfinger", MovieGenre.ACTION, "1965"),
+                Movie("Guardians of the Galaxy", MovieGenre.FANTASY, "2014")
         )
         adapter.notifyDataSetChanged()
     }
@@ -73,7 +73,7 @@ class MainActivity : AppCompatActivity(), OnItemClickListener {
 
     override fun onItemClick(position: Int) {
         val movie = movieList[position]
-        val intent = MovieActivity.getStartingIntent(this, movie.title, movie.imageResource)
+        val intent = MovieActivity.getStartingIntent(this, movie.title, movie.genre.imageResource)
         startActivity(intent)
     }
 }

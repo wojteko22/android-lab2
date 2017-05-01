@@ -7,7 +7,6 @@ import android.support.v7.app.AppCompatActivity
 import kotlinx.android.synthetic.main.activity_movie.*
 
 class MovieActivity : AppCompatActivity() {
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_movie)
@@ -24,7 +23,7 @@ class MovieActivity : AppCompatActivity() {
         private val TITLE = "TITLE"
         private val IMAGE = "IMAGE"
 
-        fun getStartingIntent(context: Context, title: String, imageResource: Int?): Intent {
+        fun getStartingIntent(context: Context, title: String, imageResource: Int): Intent {
             val intent = Intent(context, MovieActivity::class.java)
             intent.putExtra(TITLE, title)
             intent.putExtra(IMAGE, imageResource)

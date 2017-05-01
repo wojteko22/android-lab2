@@ -21,9 +21,9 @@ class MoviesAdapter(private val moviesList: List<Movie>, private val listener: O
     override fun onBindViewHolder(holder: MoviesViewHolder, position: Int) {
         val movie = moviesList[position]
         holder.title.text = movie.title
-        holder.genre.text = movie.genre
+        holder.genre.text = movie.genre.name.toLowerCase().capitalize()
         holder.year.text = movie.year
-        movie.imageResource?.let { holder.movieImage.setImageResource(it) }
+        holder.movieImage.setImageResource(movie.genre.imageResource)
     }
 
     override fun getItemCount(): Int {
