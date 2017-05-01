@@ -11,6 +11,8 @@ class MovieActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_movie)
         showInfo()
+        readSavedData()
+        ratingBar.setOnRatingBarChangeListener { _, rating, _ -> saveData(rating) }
     }
 
     private fun showInfo() {
@@ -18,6 +20,18 @@ class MovieActivity : AppCompatActivity() {
         tvTitle.text = extras.getString(TITLE)
         ivMovieImage.setImageResource(extras.getInt(IMAGE))
         tvDescription.text = extras.getString(DESCRIPTION)
+    }
+
+    private fun saveData(rating: Float) {
+        val data = getPreferences(Context.MODE_PRIVATE)
+        val editor = data.edit()
+        editor.putFloat(tvTitle.text.toString(), rating)
+        editor.apply()
+    }
+
+    private fun readSavedData() {
+        val data = getPreferences(Context.MODE_PRIVATE)
+        ratingBar.rating = data.getFloat(tvTitle.text.toString(), 0f)
     }
 
     companion object {
