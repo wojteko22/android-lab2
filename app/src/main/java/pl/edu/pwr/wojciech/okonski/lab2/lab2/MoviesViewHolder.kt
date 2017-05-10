@@ -11,22 +11,17 @@ class MoviesViewHolder(view: View, listener: OnItemClickListener) : RecyclerView
     val year: TextView = view.year
     val genre: TextView = view.genre
     val movieImage: ImageView = view.ivMovieImage
+    val ivEye: ImageView = view.ivEye
 
     init {
         view.setOnClickListener { listener.onItemClick(adapterPosition) }
         view.setOnLongClickListener {
-            consume {
-                view.ivEye.visibility =
-                        if (view.ivEye.visibility == View.VISIBLE)
-                            View.INVISIBLE
-                        else
-                            View.VISIBLE
-            }
+            consume { listener.onItemLongClick(adapterPosition) }
         }
     }
+}
 
-    inline fun consume(f: () -> Unit): Boolean {
-        f()
-        return true
-    }
+inline fun consume(f: () -> Unit): Boolean {
+    f()
+    return true
 }

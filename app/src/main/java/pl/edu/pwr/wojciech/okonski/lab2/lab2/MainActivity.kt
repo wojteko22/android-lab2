@@ -74,4 +74,10 @@ class MainActivity : AppCompatActivity(), OnItemClickListener {
                 this, movie.title, movie.genre.imageResource, movie.description)
         startActivity(intent)
     }
+
+    override fun onItemLongClick(position: Int) {
+        val movie = movieList[position]
+        movie.changeSeen()
+        adapter.notifyItemChanged(position)
+    }
 }

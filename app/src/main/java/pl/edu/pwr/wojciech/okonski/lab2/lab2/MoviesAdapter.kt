@@ -2,6 +2,7 @@ package pl.edu.pwr.wojciech.okonski.lab2.lab2
 
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
 
 class MoviesAdapter(private val moviesList: List<Movie>, private val listener: OnItemClickListener) : RecyclerView.Adapter<MoviesViewHolder>() {
@@ -24,6 +25,11 @@ class MoviesAdapter(private val moviesList: List<Movie>, private val listener: O
         holder.genre.text = movie.genre.name.toLowerCase().capitalize()
         holder.year.text = movie.year
         holder.movieImage.setImageResource(movie.genre.imageResource)
+        holder.ivEye.visibility =
+                if (movie.seen)
+                    View.VISIBLE
+                else
+                    View.INVISIBLE
     }
 
     override fun getItemCount(): Int {
