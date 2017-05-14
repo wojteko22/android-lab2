@@ -22,6 +22,7 @@ class MovieFragment : Fragment() {
         showInfo()
         readSavedData()
         ratingBar.setOnRatingBarChangeListener { _, rating, _ -> saveData(rating) }
+        btnInfo.setOnClickListener { startInfoFragments() }
     }
 
     private fun showInfo() {
@@ -39,6 +40,15 @@ class MovieFragment : Fragment() {
         with(editor) {
             putFloat(tvTitle.text.toString(), rating)
             apply()
+        }
+    }
+
+    private fun startInfoFragments() {
+        val fragment = ImagesFragment()
+        val transaction = fragmentManager.beginTransaction()
+        with(transaction) {
+            replace(R.id.fragmentContainer, fragment)
+            commit()
         }
     }
 

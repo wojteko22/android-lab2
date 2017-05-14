@@ -6,11 +6,12 @@ import android.support.v7.app.AppCompatActivity
 class MovieActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        val movieFragment = MovieFragment()
-        movieFragment.arguments = intent.extras
+        setContentView(R.layout.activity_movie)
+        val fragment = MovieFragment()
+        fragment.arguments = intent.extras
         val transaction = fragmentManager.beginTransaction()
         with(transaction) {
-            add(android.R.id.content, movieFragment)
+            add(R.id.fragmentContainer, fragment)
             commit()
         }
     }
