@@ -45,7 +45,7 @@ class MainActivity : AppCompatActivity(), OnItemClickListener {
 
     override fun onItemClick(position: Int) {
         val movie = movieList[position]
-        val intent = MovieActivity.getStartingIntent(
+        val intent = MovieFragment.getStartingIntent(
                 this, movie.title, movie.genre.imageResource, movie.description)
         startActivity(intent)
     }
