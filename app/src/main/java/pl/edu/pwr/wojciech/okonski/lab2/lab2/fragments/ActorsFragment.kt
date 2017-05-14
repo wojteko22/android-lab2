@@ -1,7 +1,10 @@
 package pl.edu.pwr.wojciech.okonski.lab2.lab2.fragments
 
 import android.os.Bundle
+import android.widget.ImageView
+import android.widget.TextView
 import kotlinx.android.synthetic.main.fragment_actors.*
+import pl.edu.pwr.wojciech.okonski.lab2.lab2.model.Actor
 import pl.edu.pwr.wojciech.okonski.lab2.lab2.movieList
 
 class ActorsFragment : android.app.Fragment() {
@@ -17,8 +20,13 @@ class ActorsFragment : android.app.Fragment() {
     private fun showActors() {
         val index = arguments.getInt(MovieFragment.INDEX)
         val movie = movieList[index]
-        tvActor1.text = movie.actors[0].fullName
-        tvActor2.text = movie.actors[1].fullName
-        tvActor3.text = movie.actors[2].fullName
+        set(tvActor1, ivActor1, movie.actors[0])
+        set(tvActor2, ivActor2, movie.actors[1])
+        set(tvActor3, ivActor3, movie.actors[2])
+    }
+
+    private fun set(textView: TextView, imageView: ImageView, actor: Actor) {
+        textView.text = actor.fullName
+        imageView.setImageResource(actor.imageResource)
     }
 }

@@ -33,7 +33,7 @@ class MovieFragment : Fragment() {
         val movie = movieList[index]
         tvTitle.text = movie.title
         ivMovieImage.setImageResource(movie.genre.imageResource)
-        tvDescription.text = movie.description
+        tvDescription.text = getString(movie.descriptionResource)
     }
 
     private fun readSavedData() {
