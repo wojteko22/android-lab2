@@ -11,7 +11,7 @@ class MovieActivity : AppCompatActivity() {
         fragment.arguments = intent.extras
         val transaction = fragmentManager.beginTransaction()
         with(transaction) {
-            add(R.id.fragmentContainer, fragment)
+            add(R.id.outer_container, fragment)
             commit()
         }
     }
