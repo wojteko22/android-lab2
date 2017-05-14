@@ -44,10 +44,12 @@ class MovieFragment : Fragment() {
     }
 
     private fun startInfoFragments() {
+        val outerFragment = fragmentManager.findFragmentById(R.id.outer_container)
         val transaction = fragmentManager.beginTransaction()
         with(transaction) {
-            replace(R.id.outer_container, ImagesFragment())
-            replace(R.id.inner_container, ActorsFragment())
+            detach(outerFragment)
+            add(R.id.upper_inner_container, ImagesFragment())
+            add(R.id.lower_inner_container, ActorsFragment())
             commit()
         }
     }
