@@ -4,6 +4,7 @@ import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import pl.edu.pwr.wojciech.okonski.lab2.lab2.model.Movie
 
 class MoviesAdapter(private val moviesList: List<Movie>, private val listener: OnItemClickListener) : RecyclerView.Adapter<MoviesViewHolder>() {
     private val imageLeft = 0

@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="pl.edu.pwr.wojciech.okonski.lab2.lab2.ImagesFragment">
+    tools:context="pl.edu.pwr.wojciech.okonski.lab2.lab2.fragments.ImagesFragment">
 
     <ImageView
         android:id="@+id/imageView1"

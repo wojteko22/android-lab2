@@ -9,6 +9,9 @@ import android.support.v7.widget.RecyclerView
 import android.support.v7.widget.helper.ItemTouchHelper
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.content_main.*
+import pl.edu.pwr.wojciech.okonski.lab2.lab2.fragments.MovieFragment
+import pl.edu.pwr.wojciech.okonski.lab2.lab2.model.Movie
+import pl.edu.pwr.wojciech.okonski.lab2.lab2.model.MovieGenre
 import kotlin.properties.Delegates
 
 class MainActivity : AppCompatActivity(), OnItemClickListener {
@@ -44,9 +47,7 @@ class MainActivity : AppCompatActivity(), OnItemClickListener {
     }
 
     override fun onItemClick(position: Int) {
-        val movie = movieList[position]
-        val intent = MovieFragment.getStartingIntent(
-                this, movie.title, movie.genre.imageResource, movie.description)
+        val intent = MovieFragment.getStartingIntent(this, position)
         startActivity(intent)
     }
 

@@ -2,6 +2,7 @@ package pl.edu.pwr.wojciech.okonski.lab2.lab2
 
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
+import pl.edu.pwr.wojciech.okonski.lab2.lab2.fragments.MovieFragment
 
 class MovieActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {

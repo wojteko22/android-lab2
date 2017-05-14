@@ -1,4 +1,4 @@
-package pl.edu.pwr.wojciech.okonski.lab2.lab2
+package pl.edu.pwr.wojciech.okonski.lab2.lab2.fragments
 
 import android.app.Fragment
 import android.content.Context
@@ -9,6 +9,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import kotlinx.android.synthetic.main.fragment_movie.*
+import pl.edu.pwr.wojciech.okonski.lab2.lab2.MovieActivity
+import pl.edu.pwr.wojciech.okonski.lab2.lab2.R
+import pl.edu.pwr.wojciech.okonski.lab2.lab2.movieList
 
 class MovieFragment : Fragment() {
     val data: SharedPreferences by lazy { activity.getPreferences(Context.MODE_PRIVATE) }
@@ -26,9 +29,11 @@ class MovieFragment : Fragment() {
     }
 
     private fun showInfo() {
-        tvTitle.text = arguments.getString(TITLE)
-        ivMovieImage.setImageResource(arguments.getInt(IMAGE))
-        tvDescription.text = arguments.getString(DESCRIPTION)
+        val index = arguments.getInt(INDEX)
+        val movie = movieList[index]
+        tvTitle.text = movie.title
+        ivMovieImage.setImageResource(movie.genre.imageResource)
+        tvDescription.text = movie.description
     }
 
     private fun readSavedData() {
@@ -45,28 +50,23 @@ class MovieFragment : Fragment() {
 
     private fun startInfoFragments() {
         val outerFragment = fragmentManager.findFragmentById(R.id.outer_container)
+        val actorsFragment = ActorsFragment()
+        actorsFragment.arguments = arguments
         val transaction = fragmentManager.beginTransaction()
         with(transaction) {
             detach(outerFragment)
             add(R.id.upper_inner_container, ImagesFragment())
-            add(R.id.lower_inner_container, ActorsFragment())
+            add(R.id.lower_inner_container, actorsFragment)
             commit()
         }
     }
 
     companion object {
-        private val TITLE = "TITLE"
-        private val IMAGE = "IMAGE"
-        private val DESCRIPTION = "DESCRIPTION"
+        val INDEX = "INDEX"
 
-        fun getStartingIntent(context: Context, title: String, imageResource: Int, description: String): Intent {
+        fun getStartingIntent(context: Context, index: Int): Intent {
             val intent = Intent(context, MovieActivity::class.java)
-            with(intent) {
-                putExtra(TITLE, title)
-                putExtra(IMAGE, imageResource)
-                putExtra(DESCRIPTION, description)
-            }
-            return intent
+            return intent.putExtra(INDEX, index)
         }
     }
 }
