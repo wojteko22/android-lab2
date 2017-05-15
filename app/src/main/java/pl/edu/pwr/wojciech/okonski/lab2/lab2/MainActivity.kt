@@ -11,10 +11,9 @@ import kotlinx.android.synthetic.main.activity_main.*
 import pl.edu.pwr.wojciech.okonski.lab2.lab2.fragments.MovieFragment
 import pl.edu.pwr.wojciech.okonski.lab2.lab2.model.Movie
 import pl.edu.pwr.wojciech.okonski.lab2.lab2.model.MovieGenre
-import kotlin.properties.Delegates
 
 class MainActivity : AppCompatActivity(), OnItemClickListener {
-    private var adapter: MoviesAdapter by Delegates.notNull()
+    private val adapter: MoviesAdapter by lazy { MoviesAdapter(movieList, this) }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -24,7 +23,6 @@ class MainActivity : AppCompatActivity(), OnItemClickListener {
     }
 
     private fun setRecyclerView() {
-        adapter = MoviesAdapter(movieList, this)
         recyclerView.adapter = adapter
         recyclerView.layoutManager = LinearLayoutManager(this)
         recyclerView.addItemDecoration(DividerItemDecoration(this, DividerItemDecoration.VERTICAL))

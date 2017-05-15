@@ -1,6 +1,7 @@
 package pl.edu.pwr.wojciech.okonski.lab2.lab2.fragments
 
 import android.app.Fragment
+import android.app.FragmentTransaction
 import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
@@ -59,6 +60,7 @@ class MovieFragment : Fragment() {
             detach(outerFragment)
             add(R.id.upper_inner_container, imagesFragment)
             add(R.id.lower_inner_container, actorsFragment)
+            setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
             addToBackStack(null)
             commit()
         }
