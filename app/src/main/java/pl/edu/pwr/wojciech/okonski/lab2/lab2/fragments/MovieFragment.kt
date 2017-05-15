@@ -31,7 +31,7 @@ class MovieFragment : Fragment() {
     private fun showInfo() {
         val movie = movieList[index]
         tvTitle.text = movie.title
-        ivMovieImage.setImageResource(movie.genre.imageResource)
+        ivMovieImage.setImageResource(movie.mainImageResource)
         tvDescription.text = getString(movie.descriptionResource)
     }
 

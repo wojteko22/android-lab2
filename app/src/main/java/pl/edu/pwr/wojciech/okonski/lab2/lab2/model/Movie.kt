@@ -4,12 +4,13 @@ import pl.edu.pwr.wojciech.okonski.lab2.lab2.R
 import java.util.*
 import kotlin.collections.ArrayList
 
-class Movie(val title: String, val genre: MovieGenre, val year: String, seen: Boolean = false) {
+class Movie(val title: String, val genre: MovieGenre, val year: String) {
     val actors = actorBase.takeRandomly(3)
     val descriptionResource: Int = descriptionBase.takeRandomly(1)[0]
     val images = imagesBase.takeRandomly(6)
+    val mainImageResource = genre.imageResource
 
-    var seen = seen
+    var seen = false
         private set
 
     fun changeSeen() {
