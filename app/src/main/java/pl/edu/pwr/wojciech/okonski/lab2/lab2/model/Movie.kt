@@ -7,6 +7,7 @@ import kotlin.collections.ArrayList
 class Movie(val title: String, val genre: MovieGenre, val year: String, seen: Boolean = false) {
     val actors = actorBase.takeRandomly(3)
     val descriptionResource: Int = descriptionBase.takeRandomly(1)[0]
+    val images = imagesBase.takeRandomly(6)
 
     var seen = seen
         private set
@@ -22,6 +23,18 @@ val actorBase = listOf(
         Actor("Donald Tusk", R.drawable.tusk),
         Actor("Ryszard Petru", R.drawable.petru),
         Actor("Janusz Palikot", R.drawable.palikot)
+)
+
+val imagesBase = listOf(
+        R.drawable.a,
+        R.drawable.b,
+        R.drawable.c,
+        R.drawable.d,
+        R.drawable.e,
+        R.drawable.f,
+        R.drawable.g,
+        R.drawable.h,
+        R.drawable.i
 )
 
 val descriptionBase = listOf(R.string.description1, R.string.description2, R.string.description3)
