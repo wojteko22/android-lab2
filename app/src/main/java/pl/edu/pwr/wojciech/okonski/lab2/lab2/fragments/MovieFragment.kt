@@ -59,6 +59,7 @@ class MovieFragment : Fragment() {
             detach(outerFragment)
             add(R.id.upper_inner_container, imagesFragment)
             add(R.id.lower_inner_container, actorsFragment)
+            addToBackStack(null)
             commit()
         }
     }

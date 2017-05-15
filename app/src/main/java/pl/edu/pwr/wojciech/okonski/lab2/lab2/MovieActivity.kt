@@ -9,7 +9,8 @@ class MovieActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_movie)
-        addMovieFragmentIfThereIsNotInner()
+        if (savedInstanceState == null)
+            addMovieFragmentIfThereIsNotInner()
     }
 
     private fun addMovieFragmentIfThereIsNotInner() {
@@ -26,5 +27,14 @@ class MovieActivity : AppCompatActivity() {
             add(R.id.outer_container, movieFragment)
             commit()
         }
+    }
+
+    override fun onSupportNavigateUp(): Boolean {
+        if (fragmentManager.backStackEntryCount > 0) {
+            fragmentManager.popBackStack()
+        } else {
+            super.onSupportNavigateUp()
+        }
+        return true
     }
 }
