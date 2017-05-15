@@ -29,4 +29,16 @@ class ActorsFragment : android.app.Fragment() {
         textView.text = actor.fullName
         imageView.setImageResource(actor.imageResource)
     }
+
+    companion object {
+        val INDEX = "INDEX"
+
+        fun newInstance(index: Int): ActorsFragment {
+            val instance = ActorsFragment()
+            val args = Bundle()
+            args.putInt(INDEX, index)
+            instance.arguments = args
+            return instance
+        }
+    }
 }

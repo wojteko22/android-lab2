@@ -32,4 +32,16 @@ class ImagesFragment : Fragment() {
         ivStill5.setImageResource(images[4])
         ivStill6.setImageResource(images[5])
     }
+
+    companion object {
+        val INDEX = "INDEX"
+
+        fun newInstance(index: Int): ImagesFragment {
+            val instance = ImagesFragment()
+            val args = Bundle()
+            args.putInt(INDEX, index)
+            instance.arguments = args
+            return instance
+        }
+    }
 }

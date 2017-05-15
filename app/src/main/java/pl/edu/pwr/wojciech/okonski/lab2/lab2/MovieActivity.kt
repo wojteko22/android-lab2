@@ -1,6 +1,8 @@
 package pl.edu.pwr.wojciech.okonski.lab2.lab2
 
 import android.app.Fragment
+import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import pl.edu.pwr.wojciech.okonski.lab2.lab2.fragments.MovieFragment
@@ -20,8 +22,8 @@ class MovieActivity : AppCompatActivity() {
     }
 
     private fun addMovieFragment() {
-        val movieFragment = MovieFragment()
-        movieFragment.arguments = intent.extras
+        val index = intent.extras.getInt(INDEX)
+        val movieFragment = MovieFragment.newInstance(index)
         val transaction = fragmentManager.beginTransaction()
         with(transaction) {
             add(R.id.outer_container, movieFragment)
@@ -29,12 +31,19 @@ class MovieActivity : AppCompatActivity() {
         }
     }
 
-    override fun onSupportNavigateUp(): Boolean {
-        if (fragmentManager.backStackEntryCount > 0) {
-            fragmentManager.popBackStack()
-        } else {
-            super.onSupportNavigateUp()
+    override fun onSupportNavigateUp() =
+            if (fragmentManager.backStackEntryCount > 0) {
+                fragmentManager.popBackStack()
+                false
+            } else
+                super.onSupportNavigateUp()
+
+    companion object {
+        private val INDEX = "INDEX"
+
+        fun getStartingIntent(context: Context, index: Int): Intent {
+            val intent = Intent(context, MovieActivity::class.java)
+            return intent.putExtra(INDEX, index)
         }
-        return true
     }
 }
