@@ -8,7 +8,6 @@ import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
 import android.support.v7.widget.helper.ItemTouchHelper
 import kotlinx.android.synthetic.main.activity_main.*
-import kotlinx.android.synthetic.main.content_main.*
 import pl.edu.pwr.wojciech.okonski.lab2.lab2.fragments.MovieFragment
 import pl.edu.pwr.wojciech.okonski.lab2.lab2.model.Movie
 import pl.edu.pwr.wojciech.okonski.lab2.lab2.model.MovieGenre
@@ -20,7 +19,6 @@ class MainActivity : AppCompatActivity(), OnItemClickListener {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        setSupportActionBar(toolbar)
         setRecyclerView()
         swipeToDismissTouchHelper.attachToRecyclerView(recyclerView)
     }
